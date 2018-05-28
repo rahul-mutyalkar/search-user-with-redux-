@@ -6,19 +6,19 @@ import {
 } from '../constants'
 const initialState = {
   searchText: "",
-  data: [],
+  data: null,
   dataFetched: false,
   isFetching: false,
   error: false
 }
 
 export default function dataReducer(state = initialState, action) {
-  console.log("action : ", action)
+  // console.log("in state : ", state)
   switch (action.type) {
     case FETCHING_DATA:
       return {
         ...state,
-        data: [],
+        data: null,
         isFetching: true
       }
     case FETCHING_DATA_SUCCESS:

@@ -4,5 +4,6 @@ import thunk from 'redux-thunk'
 
 export default function configureStore() {
   let store = createStore(app, applyMiddleware(thunk))
+// console.log('configureStore store : ',store)
   return store
 }

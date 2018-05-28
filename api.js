@@ -12,10 +12,10 @@ const people = [{
   }
 ]
 
-export default () => {
+export default (text) => {
   // return new Promise((resolve, reject) => {
 
-
-  return fetch('https://api.github.com/users')
+console.log('text : ',text)
+  return fetch('https://api.github.com/users/'+text)
 
 }

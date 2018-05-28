@@ -3,14 +3,16 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Provider} from 'react-redux'
 import configureStore from './configureStore'
 import Input from './input'
+
 const store = configureStore()
 
 export default class App extends React.Component {
   render() {
     return (<View style={styles.container}>
       <Text>Find user by name</Text>
+      <Provider store={store}>
       <Input/>
-
+  </Provider>
     </View>);
   }
 }

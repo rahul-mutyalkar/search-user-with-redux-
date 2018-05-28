@@ -12,7 +12,7 @@ export function getData() {
 }
 
 export function getDataSuccess(data) {
-  console.log("getDataSuccess : ")
+  // console.log("getDataSuccess : ")
   return {
     type: FETCHING_DATA_SUCCESS,
     data,
@@ -31,10 +31,18 @@ export function fetchData(string) {
 
   return (dispatch) => {
     dispatch(getData())
-    getPeople().then((response) => response.json())
-      .then((data) => {
-        console.log("data : ", data)
-        dispatch(getDataSuccess(data));
+    getPeople(string)
+      .then((response) => {
+        if (response.status == 200) {
+          response.json().then((data)=>{
+            // console.log("data : ",data)
+          dispatch(getDataSuccess(data));
+          })
+        } else {
+          dispatch(getDataSuccess(null));
+
+        }
+        // console.log("response : ", response.json())
       })
       .catch((err) => console.log('err:', err))
   }
