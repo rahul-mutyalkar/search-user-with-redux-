@@ -8,7 +8,7 @@ const store = configureStore()
 export default class App extends React.Component {
   render() {
     return (<View style={styles.container}>
-      <Text>aaaaaaaaaaaaaaaa</Text>
+      <Text>Find user by name</Text>
       <Input/>
 
     </View>);
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    marginTop:'20%',
+    // justifyContent: 'center'
   }
 });
