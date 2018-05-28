@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View,TextInput,Image} from 'react-native';
 import * as _ from 'lodash';
-
+import {connect} from 'react-redux'
+import {fetchData} from './actions'
 export default class Input extends React.Component {
   constructor(props) {
     super(props);
@@ -73,6 +74,23 @@ findUser() {
           { this.state.text.length>0 && this.state.isFetching==false && this.state.userExist==false ? <Text>No user Found</Text>:null}
       </View>
     );
+  }
+}
+
+function mapStateToProps(state) {
+  console.log("state : ", state);
+  return {appData: state.appData}
+}
+function handle() {
+  console.log("handle")
+}
+
+function mapDispatchToProps(dispatch) {
+  // console.log('dispatch : ',dispatch)
+  return {
+    fetchData: (text) => dispatch(fetchData(text)),
+    changeSearchString: (text) => dispatch({type: 'CHANGE_SEARCH_STRING', text})
+
   }
 }
 
