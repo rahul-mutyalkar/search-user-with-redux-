@@ -2,8 +2,15 @@
   "env": {
     "node": true,
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest":true
+
   },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "max-len": [2, {"code": 250, "tabWidth": 4, "ignoreUrls": true}],
+    "react/prop-types": ["disabled"]
+    },
   "parser": "babel-eslint",
   "extends": "airbnb"
 }
