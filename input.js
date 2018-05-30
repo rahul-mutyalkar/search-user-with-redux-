@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
 import * as _ from 'lodash';
 import { connect } from 'react-redux';
 import { fetchData } from './actions';
+import configureStore from './configureStore';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,10 +18,7 @@ const styles = StyleSheet.create({
 class Input extends React.Component {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   text: '', userData: {}, isFetching: false, userExist: false,
-    // };
+    this.store = configureStore();
     this.delayedText = _.debounce(this.findUser.bind(this), 250);
   }
 
@@ -30,6 +28,8 @@ class Input extends React.Component {
   }
 
   findUser() {
+
+    console.log('findUser() : ', this.props.appData)
     if (this.props.appData.searchText.length > 0) {
       this.props.fetchData(this.props.appData.searchText);
     }

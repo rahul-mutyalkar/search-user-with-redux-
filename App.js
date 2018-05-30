@@ -12,15 +12,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     marginTop: '20%',
-    // justifyContent: 'center'
   },
 });
-/* eslint-disable max-len */
+
 export default class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Find user by name</Text>
+        <Text>Find user by name
+        </Text>
         <Provider store={store}>
           <Input />
         </Provider>

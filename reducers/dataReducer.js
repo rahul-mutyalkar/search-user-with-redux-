@@ -4,9 +4,11 @@ import {
   FETCHING_DATA_FAILURE,
   CHANGE_SEARCH_STRING
 } from '../constants'
+
 const initialState = {
-  searchText: "",
+  searchText: '',
   data: null,
+  userArray: [],
   dataFetched: false,
   isFetching: false,
   error: false
@@ -25,7 +27,8 @@ export default function dataReducer(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        data: action.data
+        data: action.data,
+        userArray: action.data !== null ? [...state.userArray, [action.data]] : state.userArray,
       }
     case FETCHING_DATA_FAILURE:
       return {

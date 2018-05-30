@@ -4,6 +4,6 @@ import app from './reducers';
 
 export default function configureStore() {
   const store = createStore(app, applyMiddleware(thunk));
-  // console.log('configureStore store : ',store)
+  // console.log('configureStore store : ', store);
   return store;
 }
