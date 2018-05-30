@@ -19,22 +19,29 @@ class Input extends React.Component {
   constructor(props) {
     super(props);
     this.store = configureStore();
-    this.delayedText = _.debounce(this.findUser.bind(this), 250);
+    this.delayedText = _.debounce(this.findUser.bind(this), 100);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (e) => {
     this.props.changeSearchString(e);
-    this.delayedText(e);
-  }
-
-  findUser() {
-
-    console.log('findUser() : ', this.props.appData)
-    if (this.props.appData.searchText.length > 0) {
-      this.props.fetchData(this.props.appData.searchText);
+    if (e.length > 0) {
+      this.delayedText(e)
     }
   }
 
+  findUser() {
+    console.log('findUser() : ', this.props.appData);
+    const text = this.props.appData.searchText.length > 0 ? this.props.appData.searchText.toLowerCase() : '';
+    const userExist = _.find(this.props.appData.userArray, { login: text });
+    console.log('userExist : ', userExist);
+    if (userExist !== undefined && this.props.appData.data !== userExist) {
+      this.props.appData.data = userExist;
+    }
+    if (userExist === undefined && text.length > 0) {
+      this.props.fetchData(this.props.appData.searchText);
+    }
+  }
   render() {
     return (
       <View style={styles.container}>

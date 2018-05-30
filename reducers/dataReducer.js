@@ -28,7 +28,7 @@ export default function dataReducer(state = initialState, action) {
         ...state,
         isFetching: false,
         data: action.data,
-        userArray: action.data !== null ? [...state.userArray, [action.data]] : state.userArray,
+        userArray: action.data !== null ? [...state.userArray, action.data] : state.userArray,
       }
     case FETCHING_DATA_FAILURE:
       return {

@@ -34,7 +34,7 @@ export function fetchData(string) {
       .then((response) => {
         if (response.status === 200) {
           response.json().then((data) => {
-            // console.log("data : ",data)
+            console.log('API hitted : ')
             dispatch(getDataSuccess(data));
           });
         } else {
